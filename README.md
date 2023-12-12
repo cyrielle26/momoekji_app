@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+## Momoekji App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## npm installation
+- [x] npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+- [] react-router-dom **\_\_** npm i react-router-dom
+- [] styled-reset **\_\_** npm i styled-reset
+- [] Title react helmet \_\_\_\_ npm i react-helmet-async
+- [] react-hook-form **\_\_** npm install react-hook-form
+- [] fort-awesome **\_\_**npm i --save @fortawesome/fontawesome-svg-core
+      |\_**\_npm i --save @fortawesome/free-solid-svg-icons
+      | npm i --save @fortawesome/free-regular-svg-icons
+      | npm i --save @fortawesome/free-brands-svg-icons
+      |\_\_** npm i --save @fortawesome/react-fontawesome@latest
+- [] fetch \_\_\_\_ npm install node-fetch@2
+- [] swiper \_\_\_\_ npm install swiper
+- [] react-spinner \_\_npm i react-spinners (https://www.davidhu.io/react-spinners/)
 
-## Available Scripts
+## TO DO
 
-In the project directory, you can run:
+- [] Folders / files set up
+- [] ROUTER set up
+- [] _theme set up
+- [] GlobalStyled set up
+- [] MainLayout Setup
+- [] api set up
+- [] Loading
+- [] Header UI set up
+- [] GNB set up
+- [] Footer UI set
+- [] HOME UI set up
+- [] Detail UI set up
+- [] search UI set up
+- [] header scroll event
+- [] scrollTop
+- [] helmet <HelmetProvider>
+- [] 404
+- [] @querymedia
 
-### `npm start`
+## TO DO in detail
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [ ] ROUTER set up :
+1. [ ] install : npm i react-router-dom
+2. [ ] change App.js --> Router.js
+3. [ ] Router.js (LINK)
+4. [ ] create routes.js
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+- [ ] api set up
+1. [ ] install :  npm install axios
+2. [ ] get rapidApi or install the library
+3. [ ] api.js
+4. [ ] create constants.js IMG_URL 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [ ] CSS
+1. [ ] create GlobalStyled
+2. [ ] import GlobalStyled to Index.js
+3. [ ] add ROBOTO font to public / index.html file
+4. [ ] create Layout.js component
+5. [ ] create useScrollTop components import and add useScrollTop to Detail.js
 
-### `npm run build`
+- [ ] URL
+1. [ ] create routes.js a const with a list of object with the main pages URL base
+2. [ ] import routes to Router.js, call the object to / Route / path={routes.home}...s
+3. [ ] helmet create PageTitle.js component
+4. [ ] import PageTitle to Home.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [] Header.js
+1. [ ] jsx
+2. [ ] css
+3. [ ] function
+4. [ ] add scroll event
+5. [ ] import Header to Router
 
-### `npm run eject`
+- [ ]Footer.js
+1. [ ] jsx
+2. [ ] css
+3. [ ] import Footer to Router
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [ ] Home UI
+1. [ ] jsx
+2. [ ] css
+3. [ ]function
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [ ] Details Ui
+1. [ ] jsx
+2. [ ] css
+3. [ ] function
+4. [ ] import widgets
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [ ] Search Ui
+1. [ ] jsx
+2. [ ] css
+3. [ ] function
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-[] PageNotFound :
+ 1. [ ] jsx
+ 2. [ ] css
 
-## Learn More
+- [] Mobile version @mediaquery :
+- [] Header
+- [] GNB
+- [] Footer
+- [] Search
+- [] Detail
+- [] MainLayout 
+- [ ] Detail
+- [] 404 NotFoundPage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
