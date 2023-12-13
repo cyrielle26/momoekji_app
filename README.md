@@ -2,9 +2,9 @@
 
 ## npm installation
 - [x] npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
-- [] react-router-dom **\_\_** npm i react-router-dom
+- [x] react-router-dom **\_\_** npm i react-router-dom
 - [] styled-reset **\_\_** npm i styled-reset
-- [] Title react helmet \_\_\_\_ npm i react-helmet-async
+- [x] Title react helmet \_\_\_\_ npm i react-helmet-async
 - [] react-hook-form **\_\_** npm install react-hook-form
 - [] fort-awesome **\_\_**npm i --save @fortawesome/fontawesome-svg-core
       |\_**\_npm i --save @fortawesome/free-solid-svg-icons
@@ -39,7 +39,7 @@
 ## TO DO in detail
 
 - [ ] ROUTER set up :
-1. [ ] install : npm i react-router-dom
+1. [x] install : npm i react-router-dom
 2. [ ] change App.js --> Router.js
 3. [ ] Router.js (LINK)
 4. [ ] create routes.js
