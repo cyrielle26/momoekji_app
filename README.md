@@ -3,7 +3,7 @@
 ## npm installation
 - [x] npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 - [x] react-router-dom **\_\_** npm i react-router-dom
-- [] styled-reset **\_\_** npm i styled-reset
+- [x] styled-reset **\_\_** npm i styled-reset
 - [x] Title react helmet \_\_\_\_ npm i react-helmet-async
 - [] react-hook-form **\_\_** npm install react-hook-form
 - [] fort-awesome **\_\_**npm i --save @fortawesome/fontawesome-svg-core
@@ -52,11 +52,12 @@
 4. [ ] create constants.js IMG_URL 
 
 - [ ] CSS
-1. [ ] create GlobalStyled
+1. [ ] create GlobalStyled (install i-reset)
 2. [ ] import GlobalStyled to Index.js
-3. [ ] add ROBOTO font to public / index.html file
-4. [ ] create Layout.js component
-5. [ ] create useScrollTop components import and add useScrollTop to Detail.js
+3. [ ] _theme.js 
+4. [ ] add font npm i @fontsource/fira-code
+5. [ ] create Layout.js component
+6. [ ] create useScrollTop components import and add useScrollTop to Detail.js
 
 - [ ] URL
 1. [ ] create routes.js a const with a list of object with the main pages URL base
