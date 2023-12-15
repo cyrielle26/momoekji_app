@@ -18,7 +18,8 @@ export const Search = () => {
       setResponse(responseData.results);
     } catch (error) {
       console.error(error);
-    }
+       }
+       console.log(response);
   };
 
   return (
@@ -45,10 +46,11 @@ export const Search = () => {
         direction="column"
         width="full"
       >
-        <Input
+        <Input color="#808080"
           {...register('keyword')}
           type="text"
-          variant="filled"
+                  variant="filled"
+                  focusBorderColor="#DD9F64"
           size="lg"
           placeholder="Enter a recipe"
           onChange={(e) => {
@@ -60,9 +62,10 @@ export const Search = () => {
         <Flex mt={5} direction={['column', 'row']} justify="start">
           <Box width={['full', '1/3']} pr={[0, 10, 0]} marginRight="30px">
             <FormLabel>Diet</FormLabel>
-            <Select color="#2B2B2B"
+            <Select color="#808080"
               {...register('diet')}
-              variant="filled"
+                          variant="filled"
+                          focusBorderColor="#DD9F64"
               size="lg"
               onChange={(e) => setValue('diet', e.target.value)}
                       >
@@ -75,10 +78,11 @@ export const Search = () => {
           </Box>
           <Box width={['full', '1/3']} pl={[0, 10, 0]} mt={[5, 0]}>
             <FormLabel>Exclude Ingredients</FormLabel>
-            <Input
+            <Input color="#808080"
               {...register('exclude')}
               type="text"
-              variant="filled"
+                          variant="filled"
+                          focusBorderColor="#DD9F64"
               size="lg"
               placeholder="ex: egg"
               onChange={(e) => setValue('exclude', e.target.value)}
@@ -87,8 +91,11 @@ export const Search = () => {
         </Flex>
         <Button
           mt={5}
-          size="lg"
-          bg="#DD9F64"
+                  size="lg"
+                  variant="solid"
+                  colorScheme='orange'
+                  bg="#DD9F64"
+                //   colorScheme='#9a6542'
           color="#F9F9F9"
           type="submit"
         >
@@ -106,7 +113,7 @@ export const Search = () => {
                     <Flex items="center" justify="center">
                       <Box p={2}>
                         <Image
-                          src={` https://spoonacular.com/recipeImages/${recipe.image}`}
+                          src={recipe.image}
                           alt={recipe.id}
                         />
                       </Box>

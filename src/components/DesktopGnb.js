@@ -6,7 +6,7 @@ export const DesktopGnb = () => {
     return (
         <HStack width={'250px'} >
          
-            <Link to={routes.home}>Home</Link>
+            <Link to={routes.home} fontSize="25px">Home</Link>
             <Spacer/>
             <Link to={routes.explore} fontSize="22px">
 <MagnifyingGlassSolid boxSize="20px" marginRight="5px"/>
