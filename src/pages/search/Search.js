@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { Flex, Box, Input, Select, Button, Text, FormLabel,VStack } from '@chakra-ui/react';
+import { Flex, Box, Input, Select, Button, Text, FormLabel,VStack, Image} from '@chakra-ui/react';
 import searchHandler from './api';
+import { Link } from 'react-router-dom';
 
 
 export const Search = () => {
@@ -12,7 +13,7 @@ export const Search = () => {
    const onSubmit = async (data) => {
     try {
      const { keyword, diet, exclude } = data;
-      const responseData = await searchHandler(keyword, diet, exclude);
+    const responseData = await searchHandler(keyword, diet, exclude);
 
       setResponse(responseData.results);
     } catch (error) {
@@ -59,12 +60,12 @@ export const Search = () => {
         <Flex mt={5} direction={['column', 'row']} justify="start">
           <Box width={['full', '1/3']} pr={[0, 10, 0]} marginRight="30px">
             <FormLabel>Diet</FormLabel>
-            <Select
+            <Select color="#2B2B2B"
               {...register('diet')}
               variant="filled"
               size="lg"
               onChange={(e) => setValue('diet', e.target.value)}
-            >
+                      >
               {['none', 'pescetarian', 'lacto vegetarian', 'ovo vegetarian', 'vegan', 'vegetarian'].map((diet) => (
                 <option value={diet} key={diet}>
                   {diet}
@@ -87,8 +88,8 @@ export const Search = () => {
         <Button
           mt={5}
           size="lg"
-                  bg="#DD9F64"
-                  color="#F9F9F9"
+          bg="#DD9F64"
+          color="#F9F9F9"
           type="submit"
         >
           Search
@@ -100,13 +101,12 @@ export const Search = () => {
           <Flex mt={6} gridGap={8} direction={['column', 'row']} gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}>
             {response.map((recipe) => (
               <Box key={recipe.id} pt={6}>
-                <Box className="flow-root bg-light rounded-lg px-4 pb-8">
-                  <Box className="-mt-6">
+                <Box>
+                  <Box>
                     <Flex items="center" justify="center">
                       <Box p={2}>
-                        <img
-                          src={`https://spoonacular.com/recipeImages/${recipe.image}`}
-                          className="w-full h-full rounded-lg"
+                        <Image
+                          src={` https://spoonacular.com/recipeImages/${recipe.image}`}
                           alt={recipe.id}
                         />
                       </Box>
@@ -115,12 +115,12 @@ export const Search = () => {
                       <Box mt={4} fontSize="lg" fontWeight="bold" w="full" overflowX="auto" color="primary" className="break-words">
                         {recipe.title}
                       </Box>
-                      <Box mt={2} fontSize="sm" color="secondary" as="span" block>
+                      <Box mt={2} fontSize="sm">
                         Ready in {recipe.readyInMinutes} minutes - {recipe.servings} Servings
                       </Box>
-                      <Box mt={4} fontSize="sm" color="active" as="a" href={recipe.sourceUrl} target="_blank" rel="noopener noreferrer">
+                      <Link mt={4} fontSize="sm" color="#DD9F64" to={recipe.sourceUrl} target="_blank" rel="noopener noreferrer">
                         Go to Recipe
-                      </Box>
+                      </Link>
                     </Flex>
                   </Box>
                 </Box>
