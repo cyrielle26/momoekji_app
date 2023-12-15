@@ -6,6 +6,7 @@
 - [x] npm i @chakra-ui/theme 
 - [x] npm install @fontsource-variable/fira-code / npm install @fontsource/roboto-slab
 - [x] Title react helmet \_\_\_\_ npm i react-helmet-async
+- [ ] axios 
 - [] react-hook-form **\_\_** npm install react-hook-form
 - [] fort-awesome **\_\_**npm i --save @fortawesome/fontawesome-svg-core
       |\_**\_npm i --save @fortawesome/free-solid-svg-icons

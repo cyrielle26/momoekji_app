@@ -34,8 +34,9 @@ const _theme = extendTheme({
     global:{
       'body':{
          color: '#2B2B2B',
-         fontSize: '18px',
-        bg: "#F9F9F9"
+        fontSize: '18px',
+        bg: "#F9F9F9",
+        fontWeight: 'semibold',
       },
   
     }

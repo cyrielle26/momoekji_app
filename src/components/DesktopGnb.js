@@ -1,13 +1,16 @@
 import { HStack, Spacer } from "@chakra-ui/react"
 import { Link } from "react-router-dom";
 import { routes } from "../routes";
-
+import { MagnifyingGlassSolid } from "../data/svgIcon";
 export const DesktopGnb = () => {
     return (
-        <HStack>
-            <Link to={routes.home} fontSize="22px" as="b">Home</Link>
+        <HStack width={'250px'} >
+         
+            <Link to={routes.home}>Home</Link>
             <Spacer/>
-            <Link to={routes.explore} fontSize="22px" as="b">Explore</Link>
+            <Link to={routes.explore} fontSize="22px">
+<MagnifyingGlassSolid boxSize="20px" marginRight="5px"/>
+                Explore</Link>
         </HStack>
     )
 }

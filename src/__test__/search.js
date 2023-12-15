@@ -1,23 +1,21 @@
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { Flex, Box, Input, Select, Button, Heading, Text, FormLabel } from '@chakra-ui/react';
-import searchHandler from './api/searchHandler';
+import { Flex, Box, Input, Select, Button, Heading, Text } from '@chakra-ui/react';
 import axios from 'axios';
 
-export const Search = () => {
-  const { register, handleSubmit, setValue } = useForm();
+export const  Search = () => {
+  const [keyword, setKeyword] = useState(null);
+  const [diet, setDiet] = useState(null);
+  const [exclude, setExclude] = useState(null);
   const [response, setResponse] = useState(null);
-    
 
-   const onSubmit = async (data) => {
+  const getRecipes = async () => {
     try {
-      const { keyword, diet, exclude } = data;
       diet === 'none' ? (diet = '') : null;
-
-      // Call the searchHandler function
-      const responseData = await searchHandler(keyword, diet, exclude);
-
-      setResponse(responseData.results);
+      const res = await axios.get('api/search/', {
+        params: { keyword, diet, exclude }
+      });
+      const { data } = res;
+      setResponse(data.results);
     } catch (error) {
       console.error(error);
     }
@@ -30,19 +28,23 @@ export const Search = () => {
       px={[4, 12, 0]}
       minH="100vh"
       bg="background"
-      fontFamily="Fira Code"
+      fontFamily="raleway"
     >
       <Box mt={20}>
-        <Heading as="h1" size="6xl" fontWeight="bold" color="active">
-          Recipe Search
-        </Heading>
-        <Text color="primary" fontSize="2xl" fontWeight="light" mt={5}>
-          Search recipes from all over the world.
-        </Text>
+         <Heading as="h1" size="6xl" fontWeight="bold" color="active">
+      Recipe Search
+    </Heading>
+    <Text color="primary" fontSize="2xl" fontWeight="light" mt={5}>
+      Search recipes from all over the world.
+    </Text>
       </Box>
       <Flex
         as="form"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(e) => {
+          getRecipes();
+          e.preventDefault();
+          e.stopPropagation();
+        }}
         mt={20}
         maxW={['full', 'full', '4xl']}
         justify="center"
@@ -50,24 +52,22 @@ export const Search = () => {
         width="full"
       >
         <Input
-          {...register('keyword')}
           type="text"
           variant="filled"
           size="lg"
           placeholder="Enter a recipe"
           onChange={(e) => {
-            setValue('keyword', e.target.value);
+            setKeyword(e.target.value);
             setResponse(null);
           }}
         />
         <Flex mt={5} direction={['column', 'row']} justify="start">
           <Box width={['full', '1/3']} pr={[0, 10, 0]}>
-            <FormLabel className="text-primary text-sm">Diet</FormLabel>
+            <label className="block text-primary text-sm">Diet</label>
             <Select
-              {...register('diet')}
               variant="filled"
               size="lg"
-              onChange={(e) => setValue('diet', e.target.value)}
+              onChange={(e) => setDiet(e.target.value)}
             >
               {['none', 'pescetarian', 'lacto vegetarian', 'ovo vegetarian', 'vegan', 'vegetarian'].map((diet) => (
                 <option value={diet} key={diet}>
@@ -77,21 +77,20 @@ export const Search = () => {
             </Select>
           </Box>
           <Box width={['full', '1/3']} pl={[0, 10, 0]} mt={[5, 0]}>
-            <FormLabel className="text-primary text-sm">Exclude Ingredients</FormLabel>
+            <label className="block text-primary text-sm">Exclude Ingredients</label>
             <Input
-              {...register('exclude')}
               type="text"
               variant="filled"
               size="lg"
-              placeholder="ex: egg"
-              onChange={(e) => setValue('exclude', e.target.value)}
+              placeholder="coconut"
+              onChange={(e) => setExclude(e.target.value)}
             />
           </Box>
         </Flex>
         <Button
           mt={5}
           size="lg"
-          colorScheme="#DD9F64"
+          colorScheme="teal"
           type="submit"
         >
           Search
@@ -134,4 +133,4 @@ export const Search = () => {
       )}
     </Flex>
   );
-};
+}

@@ -9,7 +9,7 @@ https://spoonacular.com/cdn/ingredients_100x100/apple.jpg
 
 
  https://spoonacular.com/recipeImages/{ID}-{SIZE}.{TYPE}
- 
+
  90x90
 240x150
 312x150
@@ -17,3 +17,16 @@ https://spoonacular.com/cdn/ingredients_100x100/apple.jpg
 480x360
 556x370
 636x393
+
+
+
+health label =
+    
+    src = {`https://spoonacular.com/recipeImages/${recipe.id}/nutritionLabel.png`} 
+
+
+ingredientWidget =
+
+
+{`https://spoonacular.com/recipeImages/${recipe.id}/ingredientWidget`}
+
