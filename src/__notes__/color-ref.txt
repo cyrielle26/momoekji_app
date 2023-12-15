@@ -1,0 +1,9 @@
+const colors = {
+   
+     brand: {
+    'white': "#F9F9F9",
+        'brown': "#DD9F64",
+        'black': "#2B2B2B",  
+  },
+    
+}

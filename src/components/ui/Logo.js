@@ -1,18 +1,23 @@
 
-import { Text, Center, Flex} from "@chakra-ui/react";
-import {CookieBiteSolid } from "../../data/svgIcon";
-
+import {  Center, Flex, Text} from "@chakra-ui/react";
+import { CookieBiteSolid } from "../../data/svgIcon";
+import { routes } from "../../routes";
+import { Link } from "react-router-dom";
 
 
 
 export const Logo = () => {
     return (
         <Flex>
+             
             <Center>
+               <Link to={routes.home} >
             <CookieBiteSolid boxSize="50px" color="#DD9F64"/>
-                <Text as='b' fontSize={'18px'} paddingBottom={'20px'} >MoMoekji</Text>
-                </Center>
-    </Flex>
+            <Text as="b">MoMoekji</Text>
+                </Link>
+            </Center>
+            
+         </Flex>
       
     )
 }

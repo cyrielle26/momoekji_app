@@ -1,15 +1,15 @@
-import { extendTheme, theme as chakraTheme } from "@chakra-ui/react";
+import { extendBaseTheme, theme as chakraTheme } from "@chakra-ui/react";
 
-const { Button, Modal, Select, Input, Box, Text } = chakraTheme.components;
+const { Button, Modal, Select, Input,Box, Text } = chakraTheme.components;
 
 
 const components = {
     Button,
     Modal,
     Select,
-    Input,
-    Box,
-    Text
+  Input,
+  Box,
+    Text,
 };
 
  
@@ -26,7 +26,7 @@ const breakpoints = {
 
 
 
-const _theme = extendTheme({
+const _theme = extendBaseTheme({
     fonts:{
     body: `'Fira Code', sans-serif`,
   },
@@ -43,7 +43,11 @@ const _theme = extendTheme({
 
   textStyles: {
     h2: {
-
+      // you can also use responsive styles
+      fontSize: ['18px', '72px'],
+      fontWeight: 'bold',
+      lineHeight: '110%',
+      letterSpacing: '-2%',
     },
    
   },
@@ -53,4 +57,3 @@ const _theme = extendTheme({
 });
 
 export default _theme;
-

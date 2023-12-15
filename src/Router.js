@@ -4,17 +4,17 @@ import { Search } from "./pages/search/Search";
 import { PageNotFound } from "./pages/PageNotFound/PageNotFound";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { MainLayout } from './layouts/MainLayout';
+import { routes } from "./routes";
+
 
 
 const Router = () => {
   return (
     <HashRouter>
-      <MainLayout/>
       <Header/>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/explore" element={<Search />} />
+        <Route path={routes.home} element={<Home />} />
+        <Route path={routes.explore} element={<Search />} />
         <Route path="*" element={<PageNotFound/> } />
       </Routes>
       <Footer/>
