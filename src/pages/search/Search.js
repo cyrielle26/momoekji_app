@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { Flex, Box, Input, Select, Button, Heading, Text, FormLabel } from '@chakra-ui/react';
+import { Flex, Box, Input, Select, Button, Text, FormLabel,VStack } from '@chakra-ui/react';
 import searchHandler from './api';
 
 
@@ -12,7 +12,6 @@ export const Search = () => {
    const onSubmit = async (data) => {
     try {
      const { keyword, diet, exclude } = data;
-      diet === 'none' ? (diet = '') : null;
       const responseData = await searchHandler(keyword, diet, exclude);
 
       setResponse(responseData.results);
@@ -28,14 +27,14 @@ export const Search = () => {
       minH="100vh"
       fontFamily="Fira Code"
     >
-      <Box mt={20}>
-        <Text fontSizesize="45px" fontWeight="bold" >
+      <VStack mt={20}>
+        <Text fontSize="45px" fontWeight="bold" mt={5} >
           Recipe Search
         </Text>
         <Text fontSize="28px" fontWeight="light" mt={5}>
           Search recipes from all over the world.
         </Text>
-      </Box>
+      </VStack>
       <Flex
         as="form"
         onSubmit={handleSubmit(onSubmit)}
@@ -58,7 +57,7 @@ export const Search = () => {
           }
         />
         <Flex mt={5} direction={['column', 'row']} justify="start">
-          <Box width={['full', '1/3']} pr={[0, 10, 0]}>
+          <Box width={['full', '1/3']} pr={[0, 10, 0]} marginRight="30px">
             <FormLabel>Diet</FormLabel>
             <Select
               {...register('diet')}
@@ -74,7 +73,7 @@ export const Search = () => {
             </Select>
           </Box>
           <Box width={['full', '1/3']} pl={[0, 10, 0]} mt={[5, 0]}>
-            <FormLabel className="text-primary text-sm">Exclude Ingredients</FormLabel>
+            <FormLabel>Exclude Ingredients</FormLabel>
             <Input
               {...register('exclude')}
               type="text"
@@ -88,7 +87,8 @@ export const Search = () => {
         <Button
           mt={5}
           size="lg"
-          colorScheme="#DD9F64"
+                  bg="#DD9F64"
+                  color="#F9F9F9"
           type="submit"
         >
           Search
