@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Flex, Box, Input, Select, Button, Heading, Text, FormLabel } from '@chakra-ui/react';
-import searchHandler from './api/searchHandler';
-import axios from 'axios';
+import searchHandler from './api';
+
 
 export const Search = () => {
   const { register, handleSubmit, setValue } = useForm();
@@ -11,10 +11,8 @@ export const Search = () => {
 
    const onSubmit = async (data) => {
     try {
-      const { keyword, diet, exclude } = data;
+     const { keyword, diet, exclude } = data;
       diet === 'none' ? (diet = '') : null;
-
-      // Call the searchHandler function
       const responseData = await searchHandler(keyword, diet, exclude);
 
       setResponse(responseData.results);
@@ -27,16 +25,14 @@ export const Search = () => {
     <Flex
       direction="column"
       align="center"
-      px={[4, 12, 0]}
       minH="100vh"
-      bg="background"
       fontFamily="Fira Code"
     >
       <Box mt={20}>
-        <Heading as="h1" size="6xl" fontWeight="bold" color="active">
+        <Text fontSizesize="45px" fontWeight="bold" >
           Recipe Search
-        </Heading>
-        <Text color="primary" fontSize="2xl" fontWeight="light" mt={5}>
+        </Text>
+        <Text fontSize="28px" fontWeight="light" mt={5}>
           Search recipes from all over the world.
         </Text>
       </Box>
@@ -58,11 +54,12 @@ export const Search = () => {
           onChange={(e) => {
             setValue('keyword', e.target.value);
             setResponse(null);
-          }}
+          }
+          }
         />
         <Flex mt={5} direction={['column', 'row']} justify="start">
           <Box width={['full', '1/3']} pr={[0, 10, 0]}>
-            <FormLabel className="text-primary text-sm">Diet</FormLabel>
+            <FormLabel>Diet</FormLabel>
             <Select
               {...register('diet')}
               variant="filled"

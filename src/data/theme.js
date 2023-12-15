@@ -33,9 +33,9 @@ const _theme = extendTheme({
   styles:{
     global:{
       'body':{
-         color: '#2B2B2B',
+        color: '#F9F9F9',
         fontSize: '18px',
-        bg: "#F9F9F9",
+        bg: "#2B2B2B",
         fontWeight: 'semibold',
       },
   

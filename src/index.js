@@ -11,7 +11,7 @@ root.render(
   <React.StrictMode>
     <ChakraProvider theme={_theme}>    
       <CSSReset/>
-      <Router />
+      <Router/>
     </ChakraProvider>
   </React.StrictMode>
 );
