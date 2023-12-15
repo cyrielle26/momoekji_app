@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+export async function fetchRandomRecipes() {
+    
 const options = {
   method: 'GET',
   url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random',
@@ -18,4 +20,5 @@ try {
 	console.log(response.data);
 } catch (error) {
 	console.error(error);
+}
 }
