@@ -5,42 +5,51 @@ import { Loading } from "./../../components/Loading";
 
 export const Home = () => {
 
-    const [getRandomRecipesData, setGetRandomRecipesData] = useState(null);
+    const [getRandomRecipesData, setGetRandomRecipesData] = useState();
     const [isLoading, setIsLoading] = useState();
 
-     useEffect(() => {
-    (async () => {
+ useEffect(() => {
+    const fetchData = async () => {
       try {
-        const { results: randomRecipesResults } = await fetchRandomRecipes();
-        setGetRandomRecipesData(randomRecipesResults );
-
+        const randomRecipes = await fetchRandomRecipes();
+        setGetRandomRecipesData(randomRecipes);
       } catch (error) {
-        console.error("Error :" + error);   
+        console.error('Error:', error);
+         setIsLoading(false);
       }
-      setIsLoading(false);
-    })();
+        
+   };
+ 
+    fetchData(); // Call the fetchData function when the component mounts
   }, []);
 
 
 
+  
     return (
-
-        <>
-            {isLoading ? (
-                <Loading/>
-) : ( getRandomRecipesData && (
-        <Container minHeight="100vh" minWidth="100vw">
-                        <VStack>
-                            {getRandomRecipesData.map((recipe) => (
-                <Box minWidth="100vw" height="595px"  my="150px" padding="25px"> <Image src={recipe.image}>
-                    <Text fontSize="48px" marginLeft="2%"> Don't know what to cook?</Text>
-                    <Text marginLeft="2%" marginTop="35px">Looking for healthy straightforward recipes? <br/>
-                                        Check our recipes created by food content creators from all over the world! </Text>
-                                </Image>
-        </Box> ))}
-</VStack>
-            </Container >
-               ) )}
-            </>
+ <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        getRandomRecipesData && getRandomRecipesData.length > 0 && (
+          <Container minHeight="100vh" minWidth="100vw" bg={"yellow"}>
+            <VStack>
+              {getRandomRecipesData.map((recipe) => (
+                <Box minWidth="100vw" height="595px" my="150px" padding="25px" key={recipe.id}>
+                  <Image src={recipe.image} alt={recipe.id} objectFit='cover' />
+                  <Text fontSize="48px" marginLeft="2%">
+                    Don't know what to cook?
+                  </Text>
+                  <Text marginLeft="2%" marginTop="35px">
+                    Looking for healthy straightforward recipes? <br />
+                    Check our recipes created by food content creators from all over the world!
+                  </Text>
+                </Box>
+              ))}
+            </VStack>
+          </Container>
+        )
+      )}
+    </>
     )
 }

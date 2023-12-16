@@ -4,19 +4,25 @@ export async function fetchRandomRecipes() {
     
 const options = {
   method: 'GET',
-  url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random',
+  url: ' https://api.spoonacular.com/recipes/random',
   params: {
+    limitLicense: 'true',
+    tags: 'dessert',
     number: '20'
   },
   headers: {
+   
     'x-api-key': '2f2ae8801fb8459d9a65dfd2d7810de2',
   }
 };
 
 try {
-	const response = await axios.request(options);
-	console.log(response.data);
+  let response = await axios.request(options);
+   return response.data;
 } catch (error) {
-	console.error(error);
+  console.error(error.response);
+   throw error;
 }
 }
+
+ 
