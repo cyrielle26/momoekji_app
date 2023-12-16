@@ -1,28 +1,31 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { Flex, Box, Input, Select, Button, Text, FormLabel,VStack, Image} from '@chakra-ui/react';
+import { Flex, Box, Input, Select, Button, Text, FormLabel,VStack, Image, Grid, Skeleton, GridItem,} from '@chakra-ui/react';
 import searchHandler from './api';
-import { Link } from 'react-router-dom';
+import { PacmanLoader } from "react-spinners";
+
 
 
 export const Search = () => {
   const { register, handleSubmit, setValue } = useForm();
   const [response, setResponse] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
     
 
    const onSubmit = async (data) => {
     try {
-     const { keyword, diet, exclude } = data;
-    const responseData = await searchHandler(keyword, diet, exclude);
+     const { keyword, diet, exclude, include } = data;
+    const responseData = await searchHandler(keyword, diet, exclude, include);
 
       setResponse(responseData.results);
     } catch (error) {
       console.error(error);
        }
-    
   };
-   console.log(response);
-  return (
+
+  
+  return ( 
     <Flex
       direction="column"
       align="center"
@@ -60,7 +63,7 @@ export const Search = () => {
           }
         />
         <Flex mt={5} direction={['column', 'row']} justify="start">
-          <Box width={['full', '1/3']} pr={[0, 10, 0]} marginRight="30px">
+          <Box width={['full', '1/3']} pr={[0, 10, 0]} >
             <FormLabel>Diet</FormLabel>
             <Select color="#808080"
               {...register('diet')}
@@ -69,73 +72,82 @@ export const Search = () => {
               size="lg"
               onChange={(e) => setValue('diet', e.target.value)}
                       >
-              {['none', 'pescetarian', 'lacto vegetarian', 'ovo vegetarian', 'vegan', 'vegetarian'].map((diet) => (
+              {['none', 'pescetarian', 'lacto vegetarian', 'ovo vegetarian', 'vegan', 'vegetarian','paleo'].map((diet) => (
                 <option value={diet} key={diet}>
                   {diet}
                 </option>
               ))}
             </Select>
           </Box>
-          <Box width={['full', '1/3']} pl={[0, 10, 0]} mt={[5, 0]}>
+          <Box width={['full', '1/3']} pl={[0, 10, 0]} mt={[5, 0]} marginLeft={"15px"} >
             <FormLabel>Exclude Ingredients</FormLabel>
             <Input color="#808080"
               {...register('exclude')}
               type="text"
-                          variant="filled"
-                          focusBorderColor="#DD9F64"
+              variant="filled"
+              focusBorderColor="#DD9F64"
               size="lg"
               placeholder="ex: egg"
               onChange={(e) => setValue('exclude', e.target.value)}
             />
           </Box>
+             <Box width={['full', '1/3']} pl={[0, 10, 0]} mt={[5, 0]} marginLeft={"15px"}>
+            <FormLabel>Include Ingredients</FormLabel>
+            <Input color="#808080"
+              {...register('include')}
+              type="text"
+              variant="filled"
+              focusBorderColor="#DD9F64"
+              size="lg"
+              placeholder="ex: honey"
+              onChange={(e) => setValue('include', e.target.value)}
+            />
+          </Box>
         </Flex>
         <Button
-          mt={5}
+          mt={7}
                   size="lg"
                   variant="solid"
                   colorScheme='orange'
                   bg="#DD9F64"
-                //   colorScheme='#9a6542'
           color="#F9F9F9"
           type="submit"
         >
           Search
         </Button>
       </Flex>
+{isLoading ? (
+  <PacmanLoader color="#DD9F64" size={25} margin={4} />
+) : (
+  <Grid templateColumns="repeat(5, 1fr)" gap={6} mt={100} width="80%">
+    {response && response.length > 0 ? (
+      response.map((recipe) => (
+        <GridItem key={recipe.id} w="100%">
+          <VStack>
+            <Skeleton height="100%" isLoaded={isLoaded} fadeDuration={2} bg="#DD9F64">
+              <Image
+                key={recipe.id}
+                src={recipe.image || "https://congtygiaphat104.com/template/Default/img/no.png"}
+                alt={recipe.id}
+                objectFit="cover"
+                width="312px"
+                height="231px"
+                onLoad={() => setIsLoaded(true)}
+              />
+            </Skeleton>
+            <Text fontSize="lg" fontWeight="bold" maxWidth="80%">
+              {recipe.title}
+            </Text>
+          </VStack>
+        </GridItem>
+      ))
+    ) : (
+      response && response.length === 0 && <Text mt={5}>No recipes found</Text>
+    )}
+  </Grid>
+)}
 
-      {response && (
-        <Box mt={10}>
-          <Flex mt={6} gridGap={8} direction={['column', 'row']} gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}>
-            {response.map((recipe) => (
-              <Box key={recipe.id} pt={6}>
-                <Box>
-                  <Box>
-                    <Flex items="center" justify="center">
-                      <Box p={2}>
-                        <Image
-                          src={recipe.image}
-                          alt={recipe.id}
-                        />
-                      </Box>
-                    </Flex>
-                    <Flex direction="column" align="center" justify="center">
-                      <Box mt={4} fontSize="lg" fontWeight="bold" w="full" overflowX="auto" color="primary" className="break-words">
-                        {recipe.title}
-                      </Box>
-                      <Box mt={2} fontSize="sm">
-                        Ready in {recipe.readyInMinutes} minutes - {recipe.servings} Servings
-                      </Box>
-                      <Link mt={4} fontSize="sm" color="#DD9F64" to={recipe.sourceUrl} target="_blank" rel="noopener noreferrer">
-                        Go to Recipe
-                      </Link>
-                    </Flex>
-                  </Box>
-                </Box>
-              </Box>
-            ))}
-          </Flex>
-        </Box>
-      )}
+
     </Flex>
   );
 };

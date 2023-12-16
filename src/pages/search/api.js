@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function searchHandler(keyword, diet, exclude) {
+export default async function searchHandler(keyword, diet, exclude, include) {
   const options = {
     method: 'GET',
     url: 'https://api.spoonacular.com/recipes/complexSearch',
@@ -8,6 +8,7 @@ export default async function searchHandler(keyword, diet, exclude) {
       query: keyword,
       diet: diet,
       excludeIngredients: exclude,
+      includeIngredients: include,
       number: '20',
       offset: '0',
     },

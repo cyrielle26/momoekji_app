@@ -6,96 +6,91 @@
 - [x] npm i @chakra-ui/theme 
 - [x] npm install @fontsource-variable/fira-code / npm install @fontsource/roboto-slab
 - [x] Title react helmet \_\_\_\_ npm i react-helmet-async
-- [ ] axios 
-- [] react-hook-form **\_\_** npm install react-hook-form
-- [] fort-awesome **\_\_**npm i --save @fortawesome/fontawesome-svg-core
+- [x] axios 
+- [x] react-hook-form **\_\_** npm install react-hook-form
+- [x] fort-awesome **\_\_**npm i --save @fortawesome/fontawesome-svg-core
       |\_**\_npm i --save @fortawesome/free-solid-svg-icons
       | npm i --save @fortawesome/free-regular-svg-icons
       | npm i --save @fortawesome/free-brands-svg-icons
       |\_\_** npm i --save @fortawesome/react-fontawesome@latest
-- [] fetch \_\_\_\_ npm install node-fetch@2
-- [] swiper \_\_\_\_ npm install swiper
-- [] react-spinner \_\_npm i react-spinners (https://www.davidhu.io/react-spinners/)
+- [x] swiper \_\_\_\_ npm install swiper
+- [x] react-spinner \_\_npm i react-spinners (https://www.davidhu.io/react-spinners/)
 
 ## TO DO
 
-- [] Folders / files set up
-- [] ROUTER set up
-- [] _theme set up
-- [] GlobalStyled set up
-- [] MainLayout Setup
-- [] api set up
-- [] Loading
-- [] Header UI set up
-- [] GNB set up
-- [] Footer UI set
-- [] HOME UI set up
+- [x] Folders / files set up
+- [x] ROUTER set up
+- [x] _theme set up
+- [x]  api set up
+- [x] Loading (skeleton)
+- [] Loading page
+- [x] Header UI set up
+- [x] GNB set up
+- [x] Footer UI set
+- [x] HOME UI set up
 - [] Detail UI set up
-- [] search UI set up
+- [x] search UI set up
 - [] header scroll event
 - [] scrollTop
-- [] helmet <HelmetProvider>
+- [x] helmet <HelmetProvider>
 - [] 404
 - [] @querymedia
 
 ## TO DO in detail
 
-- [ ] ROUTER set up :
+- [x] ROUTER set up :
 1. [x] install : npm i react-router-dom
-2. [ ] change App.js --> Router.js
-3. [ ] Router.js (LINK)
-4. [ ] create routes.js
+2. [x] change App.js --> Router.js
+3. [x] Router.js (LINK)
+4. [x] create routes.js
 
 
 - [ ] api set up
-1. [ ] install :  npm install axios
-2. [ ] get rapidApi or install the library
-3. [ ] api.js
-4. [ ] create constants.js IMG_URL 
+1. [x] install :  npm install axios
+2. [ ] api.js Home / Search / Detail
+
 
 - [ ] CSS
-1. [ ] create GlobalStyled (install i-reset)
-2. [ ] import GlobalStyled to Index.js
-3. [ ] _theme.js 
-4. [ ] add font npm i @fontsource/fira-code
+3. [x] _theme.js 
+4. [x] add font npm i @fontsource/fira-code
 5. [ ] create Layout.js component
 6. [ ] create useScrollTop components import and add useScrollTop to Detail.js
 
 - [ ] URL
-1. [ ] create routes.js a const with a list of object with the main pages URL base
-2. [ ] import routes to Router.js, call the object to / Route / path={routes.home}...s
-3. [ ] helmet create PageTitle.js component
-4. [ ] import PageTitle to Home.js
+1. [x] create routes.js a const with a list of object with the main pages URL base
+2. [x] import routes to Router.js, call the object to / Route / path={routes.home}...s
+3. [x] helmet create PageTitle.js component
+4. [x] import PageTitle to Home.js
 
 
 
 - [] Header.js
-1. [ ] jsx
-2. [ ] css
-3. [ ] function
+1. [x] jsx
+2. [x] css
+3. [x] function
 4. [ ] add scroll event
-5. [ ] import Header to Router
+5. [x] import Header to Router
 
 - [ ]Footer.js
-1. [ ] jsx
-2. [ ] css
-3. [ ] import Footer to Router
+1. [x] jsx
+2. [x] css
+3. [x] import Footer to Router
 
 - [ ] Home UI
-1. [ ] jsx
-2. [ ] css
-3. [ ]function
+1. [x] jsx
+2. [x] css
+3. [x]function
 
 - [ ] Details Ui
-1. [ ] jsx
-2. [ ] css
-3. [ ] function
+1. [] jsx
+2. [] css
+3. [] function
 4. [ ] import widgets
 
 - [ ] Search Ui
-1. [ ] jsx
-2. [ ] css
-3. [ ] function
+1. [x] jsx
+2. [x] css
+3. [x] function
 
 -[] PageNotFound :
  1. [ ] jsx
