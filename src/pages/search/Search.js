@@ -19,9 +19,9 @@ export const Search = () => {
     } catch (error) {
       console.error(error);
        }
-       console.log(response);
+    
   };
-
+   console.log(response);
   return (
     <Flex
       direction="column"

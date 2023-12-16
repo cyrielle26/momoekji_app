@@ -5,14 +5,14 @@ import { Loading } from "./../../components/Loading";
 
 export const Home = () => {
 
-    const [getRandomRecipesData, setGetRandomRecipesData] = useState();
+    const [getRandomRecipesData, setGetRandomRecipesData] = useState(null);
     const [isLoading, setIsLoading] = useState();
 
  useEffect(() => {
     const fetchData = async () => {
       try {
         const randomRecipes = await fetchRandomRecipes();
-        setGetRandomRecipesData(randomRecipes);
+        setGetRandomRecipesData(randomRecipes.recipes);
       } catch (error) {
         console.error('Error:', error);
          setIsLoading(false);
@@ -25,7 +25,8 @@ export const Home = () => {
 
 
 
-  
+  console.log(getRandomRecipesData);
+
     return (
  <>
       {isLoading ? (
