@@ -15,7 +15,7 @@ const Router = () => {
       <Routes>
         <Route path={routes.home} element={<Home />} />
         <Route path={routes.explore} element={<Search />} />
-        <Route path="*" element={<PageNotFound/> } />
+        <Route path="*/" element={<PageNotFound/> } />
       </Routes>
       <Footer/>
     </HashRouter>

@@ -2,7 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Flex, Box, Input, Select, Button, Text, FormLabel,VStack, Image, Grid, Skeleton, GridItem,} from '@chakra-ui/react';
 import searchHandler from './api';
-import { PacmanLoader } from "react-spinners";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { Loading } from '../../components/Loading';
+import { motion, useScroll, useSpring } from "framer-motion";
 
 
 
@@ -12,6 +14,12 @@ export const Search = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
     
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
    const onSubmit = async (data) => {
     try {
@@ -26,6 +34,8 @@ export const Search = () => {
 
   
   return ( 
+    <>
+    <motion.div className="progress-bar" style={{ scaleX }} />
     <Flex
       direction="column"
       align="center"
@@ -117,7 +127,7 @@ export const Search = () => {
         </Button>
       </Flex>
 {isLoading ? (
-  <PacmanLoader color="#DD9F64" size={25} margin={4} />
+  <Loading/>
 ) : (
   <Grid templateColumns="repeat(5, 1fr)" gap={6} mt={100} width="80%">
     {response && response.length > 0 ? (
@@ -146,8 +156,7 @@ export const Search = () => {
     )}
   </Grid>
 )}
-
-
-    </Flex>
+      </Flex>
+      </>
   );
 };
