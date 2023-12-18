@@ -1,25 +1,33 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-import { Flex, Box, Input, Select, Button, Text, FormLabel,VStack, Image, Grid, Skeleton, GridItem,} from '@chakra-ui/react';
+import { useEffect, useState, useRef } from 'react';
+import {
+  Flex,
+  Box,
+  Input,
+  Select,
+  Button,
+  Text,
+  FormLabel,
+  VStack,
+  Image,
+  Grid,
+  Skeleton,
+  GridItem,
+  HStack,
+  IconButton,
+} from '@chakra-ui/react';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import searchHandler from './api';
-import { motion, useScroll, useSpring } from "framer-motion";
 import { Loading } from '../../components/Loading';
-import { motion, useScroll, useSpring } from "framer-motion";
-
+import { Link } from 'react-router-dom';
 
 
 export const Search = () => {
   const { register, handleSubmit, setValue } = useForm();
   const [response, setResponse] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-    
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const [detailId, setDetailId] = useState(null);
+
 
    const onSubmit = async (data) => {
     try {
@@ -31,11 +39,18 @@ export const Search = () => {
       console.error(error);
        }
   };
+useEffect(() => {
 
+      setIsLoaded(true);
+  
+  }, []);
+
+  console.log(detailId);
+
+ 
   
   return ( 
     <>
-    <motion.div className="progress-bar" style={{ scaleX }} />
     <Flex
       direction="column"
       align="center"
@@ -126,7 +141,7 @@ export const Search = () => {
           Search
         </Button>
       </Flex>
-{isLoading ? (
+{!isLoaded ? (
   <Loading/>
 ) : (
   <Grid templateColumns="repeat(5, 1fr)" gap={6} mt={100} width="80%">
@@ -145,9 +160,15 @@ export const Search = () => {
                 onLoad={() => setIsLoaded(true)}
               />
             </Skeleton>
+            <HStack >
             <Text fontSize="lg" fontWeight="bold" maxWidth="80%">
               {recipe.title}
-            </Text>
+              </Text>
+              <Link to={`/recipe/:${recipe.id}`}>
+              <IconButton onClick={() => {
+              }} icon={<ChevronRightIcon />}/>
+            </Link>
+           </HStack>
           </VStack>
         </GridItem>
       ))
@@ -160,3 +181,5 @@ export const Search = () => {
       </>
   );
 };
+
+

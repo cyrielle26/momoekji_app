@@ -1,73 +1,87 @@
-import axios from 'axios';
-const baseWidgetUrl = `https://api.spoonacular.com/recipes/`;
+/** @format */
+
+import axios from "axios"
+const baseWidgetUrl = `https://api.spoonacular.com/recipes/`
 
 const header = {
-  Accept: 'text/html',
-  'X-RapidAPI-Key': '2f2ae8801fb8459d9a65dfd2d7810de2',
-};
-
-export default async function fetchLabelWidget(res, id) {
-  const options = {
-    method: 'GET',
-    url: baseWidgetUrl + `${id}/nutritionLabel`,
-    params: {
-      defaultCss: 'true',
-      showOptionalNutrients: 'false',
-      showZeroValues: 'false',
-      showIngredients: 'false',
-    },
-    headers: header, 
-  };
-
-  try {
-    let response = await axios(options);
-    res.status(200).json(response.data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+	"x-api-key": "2f2ae8801fb8459d9a65dfd2d7810de2",
 }
 
+export async function fetchRecipesInfo(id) {
+	const options = {
+		method: "GET",
+		url: baseWidgetUrl + `${id}/information`,
+		params: {
+			IncludeNutrion: "true",
+		},
+		headers: header,
+	}
 
-
-export default async function fetchIngredientWidget(res, id) {
-
-  const options = {
-    method: 'GET',
-      url: baseWidgetUrl + `${id}/ingredientWidget`,
-      params: {
-        defaultCss: 'true',
-    },
-    headers: header, 
-  };
-
-  try {
-    let response = await axios(options);
-    res.status(200).json(response.data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+	try {
+		let response = await axios.request(options)
+		return response.data
+	} catch (error) {
+		console.error(error.response)
+		throw error
+	}
 }
 
-export default async function fetchEquipmentWidget(res, id) {
+export async function fetchLabelWidget(id) {
+	const options = {
+		method: "GET",
+		url: baseWidgetUrl + `${id}/nutritionLabel`,
+		params: {
+			defaultCss: "true",
+			showOptionalNutrients: "false",
+			showZeroValues: "false",
+			showIngredients: "false",
+		},
+		headers: header,
+	}
 
-  const options = {
-    method: 'GET',
-      url: baseWidgetUrl + `${id}/EquipmentWidget`,
-    params: {
-        defaultCss: 'true',
-    },
-    headers: header, 
-  };
-
-  try {
-    let response = await axios(options);
-    res.status(200).json(response.data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+	try {
+		let response = await axios.request(options)
+		return response.data
+	} catch (error) {
+		console.error(error.response)
+		throw error
+	}
 }
 
+export async function fetchIngredientWidget(id) {
+	const options = {
+		method: "GET",
+		url: baseWidgetUrl + `${id}/ingredientWidget`,
+		params: {
+			defaultCss: "true",
+		},
+		headers: header,
+	}
 
+	try {
+		let response = await axios.request(options)
+		return response.data
+	} catch (error) {
+		console.error(error.response)
+		throw error
+	}
+}
+
+export async function fetchEquipmentWidget(id) {
+	const options = {
+		method: "GET",
+		url: baseWidgetUrl + `${id}/EquipmentWidget`,
+		params: {
+			defaultCss: "true",
+		},
+		headers: header,
+	}
+
+	try {
+		let response = await axios.request(options)
+		return response.data
+	} catch (error) {
+		console.error(error.response)
+		throw error
+	}
+}

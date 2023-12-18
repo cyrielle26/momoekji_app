@@ -5,11 +5,11 @@ const { Button, Modal, Select, Input, Box, Text } = chakraTheme.components;
 
 const components = {
     Button,
-    Modal,
     Select,
     Input,
     Box,
-    Text
+  Text,
+Modal
 };
 
  
@@ -38,17 +38,27 @@ const _theme = extendTheme({
         bg: "#2B2B2B",
         fontWeight: 'semibold',
       },
-  
+      '::-webkit-scrollbar': {
+      w: '0.5rem',
+      bgColor: '#404040',
+    },
+   '::-webkit-scrollbar-thumb': {
+     bgColor: '#222222',
+    },
+ 
     }
   },
+  component: {
+  Modal: {
+    sizes: {
+      xl: {
+        h: "600px",
+        w: '1000px',
+      },
+    }
+  }},
 
-  textStyles: {
-    h2: {
-
-    },
    
-  },
-     
     components,
     breakpoints,
 });

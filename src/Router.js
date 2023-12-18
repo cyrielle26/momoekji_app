@@ -5,6 +5,7 @@ import { PageNotFound } from "./pages/PageNotFound/PageNotFound";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { routes } from "./routes";
+import { Detail } from "./pages/detail/Detail";
 
 
 
@@ -15,6 +16,7 @@ const Router = () => {
       <Routes>
         <Route path={routes.home} element={<Home />} />
         <Route path={routes.explore} element={<Search />} />
+        <Route path={routes.recipeDetail} element={<Detail/>}/>
         <Route path="*/" element={<PageNotFound/> } />
       </Routes>
       <Footer/>

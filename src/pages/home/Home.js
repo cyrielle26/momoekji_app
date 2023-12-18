@@ -7,18 +7,19 @@ import { Link } from "react-router-dom";
 import { Loading } from "../../components/Loading";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import { useMediaQuery } from "@chakra-ui/react";
 
 export const Home = () => {
   const [getRandomRecipesData, setGetRandomRecipesData] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
   
   const { pathname } = useLocation();
 
   useEffect(() => {
     // Add style to hide scroll bar
-    document.body.style.overflow = "hidden";
-
+    document.body.style.overflowX = "hidden";
+    
     const fetchData = async () => {
       try {
         const randomRecipes = await fetchRandomRecipes();
@@ -26,11 +27,9 @@ export const Home = () => {
       } catch (error) {
         console.error('Error:', error);
       }
-      setIsLoading();
+      setIsLoaded(true);
     };
-
     fetchData();
-
     // Remove the style to show the scroll bar when the component unmounts
     return () => {
       document.body.style.overflow = "auto";
@@ -44,34 +43,18 @@ export const Home = () => {
     restDelta: 0.001
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const randomRecipes = await fetchRandomRecipes();
-        setGetRandomRecipesData(randomRecipes.recipes);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-      setIsLoading();
-    };
-    
-    fetchData(); // Call the fetchData function when the component mounts
-  }, []);
+
 
   const params = {
     slidesPerView: 4.5,
     spaceBetween: 30,
     breakpoints: {
-      1024: {
-        slidesPerView: 4.5,
-        spaceBetween: 30,
-      },
       640: {
-        slidesPerView: 4.3,
+        slidesPerView: 3.5,
         spaceBetween: 15,
       },
       320: {
-        slidesPerView: 3.2,
+        slidesPerView: 3.3,
         spaceBetween: 10,
       },
     },
@@ -80,15 +63,15 @@ export const Home = () => {
   return (
     <>
        <motion.div  style={{ scaleX }}/>
-      {isLoading ? (
+      {!isLoaded ? (
      <Loading/>
     ) : ( getRandomRecipesData && getRandomRecipesData.length > 0 && (
         <Container minHeight="100vh" minWidth="100vw">
-          <VStack padding="5%">
+          <VStack padding="6%">
             <Flex mx={"5%"}>
               <Flex flexDirection="column" alignItems="flex-start" justifyContent="center" >
                 <Text fontSize="32px">Don't know what to cook?</Text>
-                <Text marginTop="22px" maxW="70%">
+                <Text marginTop="22px" maxW="65%">
                   Looking for healthy straightforward recipes? <br />
                   Check our recipes created by food content creators from all over the world!
                 </Text>
@@ -147,7 +130,7 @@ export const Home = () => {
                     </Box>
                   </Skeleton>
                 </Link>
-                <Text>{recipe.title}</Text>
+                <Text fontSize="16px">{recipe.title}</Text>
               </SwiperSlide>
             ))}
           </Swiper>

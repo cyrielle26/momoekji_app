@@ -7,7 +7,7 @@ const options = {
   url: ' https://api.spoonacular.com/recipes/random',
   params: {
     limitLicense: 'true',
-    number: '15'
+    number: '10'
   },
   headers: {
    

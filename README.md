@@ -15,6 +15,7 @@
       |\_\_** npm i --save @fortawesome/react-fontawesome@latest
 - [x] swiper \_\_\_\_ npm install swiper
 - [x] react-spinner \_\_npm i react-spinners (https://www.davidhu.io/react-spinners/)
+- [x] npm i @chakra-ui/icons
 
 ## TO DO
 
@@ -23,17 +24,17 @@
 - [x] _theme set up
 - [x]  api set up
 - [x] Loading (skeleton)
-- [] Loading page
+- [x] Loading page
 - [x] Header UI set up
 - [x] GNB set up
 - [x] Footer UI set
 - [x] HOME UI set up
 - [] Detail UI set up
 - [x] search UI set up
-- [] header scroll event
-- [] scrollTop
+- [x] header scroll event
+- [x] scrollTop
 - [x] helmet <HelmetProvider>
-- [] 404
+- [x] 404
 - [] @querymedia
 
 ## TO DO in detail
@@ -68,7 +69,7 @@
 1. [x] jsx
 2. [x] css
 3. [x] function
-4. [ ] add scroll event
+4. [x] add scroll event
 5. [x] import Header to Router
 
 - [ ]Footer.js
@@ -80,6 +81,7 @@
 1. [x] jsx
 2. [x] css
 3. [x]function
+4. [] 반응형
 
 - [ ] Details Ui
 1. [] jsx
@@ -87,14 +89,15 @@
 3. [] function
 4. [ ] import widgets
 
-- [ ] Search Ui
+- [x] Search Ui
 1. [x] jsx
 2. [x] css
 3. [x] function
+4. [] Modal
 
--[] PageNotFound :
- 1. [ ] jsx
- 2. [ ] css
+-[x] PageNotFound :
+ 1. [x] jsx
+ 2. [x] css
 
 - [] Mobile version @mediaquery :
 - [] Header
@@ -103,7 +106,7 @@
 - [] Search
 - [] Detail
 - [] MainLayout 
-- [ ] Detail
+- [] Detail
 - [] 404 NotFoundPage
 
 
