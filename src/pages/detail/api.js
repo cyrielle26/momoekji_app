@@ -12,7 +12,7 @@ export async function fetchRecipesInfo(id) {
 		method: "GET",
 		url: baseWidgetUrl + `${id}/information`,
 		params: {
-			IncludeNutrion: "true",
+			IncludeNutrion: "false",
 		},
 		headers: header,
 	}
@@ -29,9 +29,8 @@ export async function fetchRecipesInfo(id) {
 export async function fetchLabelWidget(id) {
 	const options = {
 		method: "GET",
-		url: baseWidgetUrl + `${id}/nutritionLabel`,
+		url: baseWidgetUrl + `${id}/nutritionLabel.png`,
 		params: {
-			defaultCss: "true",
 			showOptionalNutrients: "false",
 			showZeroValues: "false",
 			showIngredients: "false",
