@@ -7,12 +7,17 @@ const header = {
 	"x-api-key": "2f2ae8801fb8459d9a65dfd2d7810de2",
 }
 
+const widgetheader = {
+	Accept: "image/png",
+	"x-api-key": "2f2ae8801fb8459d9a65dfd2d7810de2",
+}
+
 export async function fetchRecipesInfo(id) {
 	const options = {
 		method: "GET",
 		url: baseWidgetUrl + `${id}/information`,
 		params: {
-			IncludeNutrion: "false",
+			IncludeNutrion: "true",
 		},
 		headers: header,
 	}
@@ -35,7 +40,7 @@ export async function fetchLabelWidget(id) {
 			showZeroValues: "false",
 			showIngredients: "false",
 		},
-		headers: header,
+		headers: widgetheader,
 	}
 
 	try {
@@ -50,11 +55,11 @@ export async function fetchLabelWidget(id) {
 export async function fetchIngredientWidget(id) {
 	const options = {
 		method: "GET",
-		url: baseWidgetUrl + `${id}/ingredientWidget`,
+		url: baseWidgetUrl + `${id}/ingredientWidget.png`,
 		params: {
 			defaultCss: "true",
 		},
-		headers: header,
+		headers: widgetheader,
 	}
 
 	try {
@@ -69,11 +74,11 @@ export async function fetchIngredientWidget(id) {
 export async function fetchEquipmentWidget(id) {
 	const options = {
 		method: "GET",
-		url: baseWidgetUrl + `${id}/equipmentWidget`,
+		url: baseWidgetUrl + `${id}/equipmentWidget.png`,
 		params: {
 			defaultCss: "true",
 		},
-		headers: header,
+		headers: widgetheader,
 	}
 
 	try {

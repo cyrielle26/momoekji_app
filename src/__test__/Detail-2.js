@@ -82,3 +82,13 @@ export const Detail = () => {
 		</>
 	)
 }
+;<Box>
+	{labelWidgetData && (
+		<Image
+			src={labelWidgetData}
+			alt='Nutrition Label'
+			width={"100px"}
+			height={"400px"}
+		/>
+	)}
+</Box>

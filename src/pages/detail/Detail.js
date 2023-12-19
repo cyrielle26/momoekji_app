@@ -11,6 +11,10 @@ import {
 	Text,
 	Flex,
 	HStack,
+	Spacer,
+	VStack,
+	Stack,
+	Circle,
 } from "@chakra-ui/react"
 import {
 	fetchLabelWidget,
@@ -35,8 +39,8 @@ export const Detail = () => {
 		const fetchData = async () => {
 			try {
 				// Fetch data for each widget type
-				const labelWidgetResponse = await fetchLabelWidget(id)
-				setLabelWidgetData(labelWidgetResponse)
+				// const labelWidgetResponse = await fetchLabelWidget(id)
+				// setLabelWidgetData(labelWidgetResponse)
 
 				// const ingredientWidgetResponse = await fetchIngredientWidget(id)
 				// setIngredientWidgetData(ingredientWidgetResponse)
@@ -57,7 +61,10 @@ export const Detail = () => {
 	}, [id])
 
 	console.log(recipeInfo)
-	console.log(labelWidgetData)
+	// console.log(ingredientWidgetData)
+	// console.log(equipmentWidgetData)
+	// console.log(labelWidgetData)
+
 	return (
 		<>
 			{
@@ -66,16 +73,12 @@ export const Detail = () => {
 				) : (
 					recipeInfo && (
 						// recipeInfo.length > 0 && (
-						<Container
-							minHeight='100vh'
-							minWidth='100vw'
-							bg={"red"}
-							padding={" 8rem 2rem"}>
-							<Center>
-								<Flex flexDirection={"column"} width={"100%"}>
-									<Wrap bg={"blue"} width={"100%"} height={"370px"}>
-										{/* {recipeInfo.map((recipe) => ( */}
-										<WrapItem>
+
+						<Container minHeight='100vh' minWidth='100vw'>
+							<Wrap minWidth='80wv' bg='blue' pt='150px'>
+								<Center>
+									<Box>
+										<Wrap>
 											<Skeleton
 												height='100%'
 												isLoaded={isLoaded}
@@ -87,27 +90,26 @@ export const Detail = () => {
 													recipeInfo.image ||
 													"https://congtygiaphat104.com/template/Default/img/no.png"
 												}
-												// alt={recipe.id}
+												alt={recipeInfo.id}
 												objectFit='cover'
 												width='556px'
-												height='370px'></Image>
-										</WrapItem>
-										<WrapItem bg={"gray"}>
-											<Center>
-												<Text>Ready in minutes </Text>
-											</Center>
-										</WrapItem>
-
-										{/* ))} */}
-									</Wrap>
-									<Wrap bg={"green"} width={"100%"} height={"500px"}></Wrap>
-								</Flex>
-								<Box>
-									{labelWidgetData && (
-										<Image src={labelWidgetData} alt='Nutrition Label' />
-									)}
-								</Box>
-							</Center>
+												height='370px'
+											/>
+										</Wrap>
+									</Box>
+									<Stack bg={"green"}>
+										<Wrap>
+											<Text fontSize={"20px"}>{recipeInfo.title}</Text>
+										</Wrap>
+										<Wrap>
+											<Circle borderRadius={"50%"} bg={"#DD9F64"} size='50px'>
+												{recipeInfo.readyInMinutes}
+											</Circle>
+											<Text>Minutes</Text>
+										</Wrap>
+									</Stack>
+								</Center>
+							</Wrap>
 						</Container>
 					)
 				)
