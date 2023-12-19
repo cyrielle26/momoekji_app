@@ -1,4 +1,5 @@
 {
+	"homepage": "https://cyrielle26.github.io/momoekji_app/",
 	"name": "momoekji_app",
 	"version": "0.1.0",
 	"private": true,
@@ -60,5 +61,8 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"gh-pages": "^6.1.0"
 	}
 }
