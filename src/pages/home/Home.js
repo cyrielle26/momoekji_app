@@ -112,7 +112,7 @@ export const Home = () => {
 									</Text>
 									<Text
 										marginTop='22px'
-										maxW='65%'
+										maxW={isLargerThan900 ? "65%" : "80%"}
 										fontSize={isLargerThan1280 ? "18px" : "14px"}
 										mb={isLargerThan1280 ? 0 : "8%"}>
 										Looking for healthy straightforward recipes? <br />
@@ -130,10 +130,7 @@ export const Home = () => {
 													startColor='#404040'
 													endColor='#505050'
 													fadeDuration={2}>
-													<Box
-														w='100%'
-														h={isLargerThan900 ? "60vh" : "50vh"}
-														minWidth='46vw'>
+													<Box w='100%' h={isLargerThan900 ? "60vh" : "50vh"}>
 														<Image
 															overflow='hidden'
 															src={
@@ -150,7 +147,14 @@ export const Home = () => {
 													</Box>
 												</Skeleton>
 											</Link>
-											<Text fontSize={isLargerThan1280 ? "18px" : "16px"}>
+											<Text
+												fontSize={
+													isLargerThan1280
+														? "18px"
+														: "16px" && isLargerThan900
+														? "16px"
+														: "14px"
+												}>
 												{getRandomRecipesData[0].title}
 											</Text>
 										</>

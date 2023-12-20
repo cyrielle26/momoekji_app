@@ -28,6 +28,7 @@ export const Search = () => {
 	const { register, handleSubmit, setValue } = useForm()
 	const [response, setResponse] = useState(null)
 	const [isLoading, setIsLoading] = useState(false)
+	const [isLargerThan1040] = useMediaQuery("(min-width: 1040px)")
 	const [isLargerThan900] = useMediaQuery("(min-width: 900px)")
 	const [isLargerThan600] = useMediaQuery("(min-width: 600px)")
 	const [isLargerThan480] = useMediaQuery("(min-width: 480px)")
@@ -178,8 +179,10 @@ export const Search = () => {
 				) : ( */}
 				<Grid
 					templateColumns={
-						isLargerThan900
+						isLargerThan1040
 							? "repeat(5, 1fr)"
+							: "repeat(4, 1fr)" && isLargerThan900
+							? "repeat(4, 1fr)"
 							: "repeat(3, 1fr)" && isLargerThan600
 							? "repeat(3, 1fr)"
 							: "repeat(2, 1fr)" && isLargerThan480
