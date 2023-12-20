@@ -1,7 +1,7 @@
 /** @format */
 
 import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
 	Flex,
 	Box,
@@ -22,12 +22,15 @@ import { ChevronRightIcon } from "@chakra-ui/icons"
 import searchHandler from "./api"
 import { Loading } from "../../components/Loading"
 import { Link } from "react-router-dom"
+import { useMediaQuery } from "@chakra-ui/react"
 
 export const Search = () => {
 	const { register, handleSubmit, setValue } = useForm()
 	const [response, setResponse] = useState(null)
 	const [isLoading, setIsLoading] = useState(false)
-	const [detailId, setDetailId] = useState(null)
+	const [isLargerThan900] = useMediaQuery("(min-width: 900px)")
+	const [isLargerThan600] = useMediaQuery("(min-width: 600px)")
+	const [isLargerThan480] = useMediaQuery("(min-width: 480px)")
 
 	const onSubmit = async (data) => {
 		try {
@@ -37,14 +40,10 @@ export const Search = () => {
 			setResponse(responseData.results)
 		} catch (error) {
 			console.error(error)
+		} finally {
+			setIsLoading(false) // Stop loading after the data is fetched or an error occurs
 		}
 	}
-
-	// useEffect(() => {
-	// 	setIsLoaded(false)
-	// }, [])
-
-	console.log(detailId)
 
 	return (
 		<>
@@ -52,12 +51,33 @@ export const Search = () => {
 				direction='column'
 				align='center'
 				minH='100vh'
-				fontFamily='Fira Code'>
+				fontFamily='Fira Code'
+				p={isLargerThan900 ? 0 : "5%"}>
 				<VStack mt={20}>
-					<Text fontSize='45px' fontWeight='bold' mt={5}>
+					<Text
+						fontSize={
+							isLargerThan900
+								? "45px"
+								: "38px" && isLargerThan480
+								? "38px"
+								: "28px"
+						}
+						fontWeight='bold'
+						mt={5}>
 						Recipe Search
 					</Text>
-					<Text fontSize='28px' fontWeight='light' mt={5}>
+					<Text
+						fontSize={
+							isLargerThan900
+								? "28px"
+								: "22px" && isLargerThan600
+								? "22px"
+								: "16px" && isLargerThan480
+								? "16px"
+								: "14xp"
+						}
+						fontWeight='light'
+						mt={5}>
 						Search recipes from all over the world.
 					</Text>
 				</VStack>
@@ -65,7 +85,7 @@ export const Search = () => {
 					as='form'
 					onSubmit={handleSubmit(onSubmit)}
 					mt={20}
-					maxW={["full", "full", "4xl"]}
+					maxW={["full", "full", "3xl"]}
 					justify='center'
 					direction='column'
 					width='full'>
@@ -83,7 +103,7 @@ export const Search = () => {
 						}}
 					/>
 					<Flex mt={5} direction={["column", "row"]} justify='start'>
-						<Box width={["full", "1/3"]} pr={[0, 10, 0]}>
+						<Box width={["full"]} pr={[0, 5]}>
 							<FormLabel>Diet</FormLabel>
 							<Select
 								color='#808080'
@@ -108,10 +128,10 @@ export const Search = () => {
 							</Select>
 						</Box>
 						<Box
-							width={["full", "1/3"]}
-							pl={[0, 10, 0]}
+							width={["full"]}
+							pl={[0, 5]}
 							mt={[5, 0]}
-							marginLeft={"15px"}>
+							marginLeft={isLargerThan480 ? "15px" : "0"}>
 							<FormLabel>Exclude Ingredients</FormLabel>
 							<Input
 								color='#808080'
@@ -125,10 +145,10 @@ export const Search = () => {
 							/>
 						</Box>
 						<Box
-							width={["full", "1/3"]}
-							pl={[0, 10, 0]}
+							width={["full"]}
+							pl={[0, 5]}
 							mt={[5, 0]}
-							marginLeft={"15px"}>
+							marginLeft={isLargerThan480 ? "15px" : "0"}>
 							<FormLabel>Include Ingredients</FormLabel>
 							<Input
 								color='#808080'
@@ -156,7 +176,19 @@ export const Search = () => {
 				{/* {isLoading ? (
 					<Loading />
 				) : ( */}
-				<Grid templateColumns='repeat(5, 1fr)' gap={6} mt={100} width='80%'>
+				<Grid
+					templateColumns={
+						isLargerThan900
+							? "repeat(5, 1fr)"
+							: "repeat(3, 1fr)" && isLargerThan600
+							? "repeat(3, 1fr)"
+							: "repeat(2, 1fr)" && isLargerThan480
+							? "repeat(2, 1fr)"
+							: "repeat(1, 1fr)"
+					}
+					gap={6}
+					mt={100}
+					width='80%'>
 					{response && response.length > 0
 						? response.map((recipe) => (
 								<GridItem key={recipe.id} w='100%'>
@@ -165,7 +197,9 @@ export const Search = () => {
 											<Skeleton
 												height='100%'
 												isLoaded={isLoading}
-												fadeDuration={3}>
+												startColor='#404040'
+												endColor='#505050'
+												fadeDuration={2}>
 												<Image
 													key={recipe.id}
 													src={
@@ -180,15 +214,20 @@ export const Search = () => {
 												/>
 											</Skeleton>
 											<HStack>
-												<Text fontSize='lg' fontWeight='bold' maxWidth='80%'>
+												<Text
+													fontSize={isLargerThan900 ? "lg" : "medium"}
+													fontWeight='bold'
+													maxWidth='80%'>
 													{recipe.title}
 												</Text>
-
-												<IconButton
-													onClick={() => {}}
-													icon={<ChevronRightIcon />}
-												/>
 											</HStack>
+											<IconButton
+												onClick={() => {}}
+												icon={<ChevronRightIcon />}
+												bg='#DD9F64'
+												borderRadius='40px'
+												size='50px'
+											/>
 										</Link>
 									</VStack>
 								</GridItem>
