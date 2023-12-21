@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/momoekji_app/static/css/main.900c1a46.css",
+    "main.js": "/momoekji_app/static/js/main.4b105fc6.js",
+    "index.html": "/momoekji_app/index.html",
+    "main.900c1a46.css.map": "/momoekji_app/static/css/main.900c1a46.css.map",
+    "main.4b105fc6.js.map": "/momoekji_app/static/js/main.4b105fc6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.900c1a46.css",
+    "static/js/main.4b105fc6.js"
+  ]
+}
