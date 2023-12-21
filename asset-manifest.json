@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/momoekji_app/static/css/main.900c1a46.css",
-    "main.js": "/momoekji_app/static/js/main.558b7e64.js",
+    "main.js": "/momoekji_app/static/js/main.f36efe9e.js",
     "index.html": "/momoekji_app/index.html",
     "main.900c1a46.css.map": "/momoekji_app/static/css/main.900c1a46.css.map",
-    "main.558b7e64.js.map": "/momoekji_app/static/js/main.558b7e64.js.map"
+    "main.f36efe9e.js.map": "/momoekji_app/static/js/main.f36efe9e.js.map"
   },
   "entrypoints": [
     "static/css/main.900c1a46.css",
-    "static/js/main.558b7e64.js"
+    "static/js/main.f36efe9e.js"
   ]
 }
