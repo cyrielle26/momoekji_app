@@ -89,7 +89,7 @@ export const Home = () => {
 			) : (
 				getRandomRecipesData &&
 				getRandomRecipesData.length > 0 && (
-					<Container minHeight='100vh' minWidth='100vw'>
+					<Container minHeight='full' minWidth='100vw'>
 						<VStack
 							mb={isLargerThan1280 ? "80px" : 0}
 							pt={

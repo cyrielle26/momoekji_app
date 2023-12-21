@@ -91,7 +91,7 @@ export const Search = () => {
 				<Flex
 					as='form'
 					onSubmit={handleSubmit(onSubmit)}
-					mt={20}
+					mt={isLargerThan480 ? 20 : 10}
 					maxW={["full", "full", "3xl"]}
 					justify='center'
 					direction='column'
