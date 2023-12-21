@@ -59,15 +59,23 @@ export const Home = () => {
 	})
 
 	const params = {
-		slidesPerView: 4.5,
-		spaceBetween: 30,
+		slidesPerView: 5.5,
+		spaceBetween: 25,
 		breakpoints: {
+			900: {
+				slidesPerView: 4.5,
+				spaceBetween: 10,
+			},
 			640: {
 				slidesPerView: 3.5,
-				spaceBetween: 15,
+				spaceBetween: 10,
+			},
+			480: {
+				slidesPerView: 2.5,
+				spaceBetween: 10,
 			},
 			320: {
-				slidesPerView: 3.3,
+				slidesPerView: 1.5,
 				spaceBetween: 10,
 			},
 		},
@@ -83,16 +91,16 @@ export const Home = () => {
 				getRandomRecipesData.length > 0 && (
 					<Container minHeight='100vh' minWidth='100vw'>
 						<VStack
-							padding={
+							mb={isLargerThan1280 ? "80px" : 0}
+							pt={
 								isLargerThan1280
-									? "6%"
-									: "10%" && isLargerThan900
-									? "10%"
-									: "15%" && isLargerThan480
-									? "15%"
-									: "10%"
-							}
-							paddingTop={isLargerThan480 ? "100px" : "120px"}>
+									? "110px"
+									: "70px" && isLargerThan900
+									? "70px"
+									: "100px" && isLargerThan480
+									? "100px"
+									: "70px"
+							}>
 							<Flex
 								mx={"5%"}
 								flexDirection={isLargerThan1280 ? "row" : "column"}
@@ -107,11 +115,19 @@ export const Home = () => {
 									flexDirection='column'
 									alignItems='flex-start'
 									justifyContent='center'>
-									<Text fontSize={isLargerThan1280 ? "28px" : "24px"}>
+									<Text
+										fontSize={
+											isLargerThan1280
+												? "28px"
+												: "24px" && isLargerThan480
+												? "24px"
+												: " 18px"
+										}>
 										Don't know what to cook?
 									</Text>
 									<Text
 										marginTop='22px'
+										fontWeight={"400"}
 										maxW={isLargerThan900 ? "65%" : "80%"}
 										fontSize={isLargerThan1280 ? "18px" : "14px"}
 										mb={isLargerThan1280 ? 0 : "8%"}>
@@ -125,12 +141,21 @@ export const Home = () => {
 										<>
 											<Link to={`/recipe/${getRandomRecipesData[0].id}`}>
 												<Skeleton
-													height='100%'
+													fitContent={true}
 													isLoaded={isLoaded}
 													startColor='#404040'
 													endColor='#505050'
-													fadeDuration={2}>
-													<Box w='100%' h={isLargerThan900 ? "60vh" : "50vh"}>
+													speed={1}
+													fadeDuration={1}>
+													<Box
+														w='100%'
+														h={
+															isLargerThan900
+																? "60vh"
+																: "50vh" && isLargerThan480
+																? "50vh"
+																: "30vh"
+														}>
 														<Image
 															overflow='hidden'
 															src={
@@ -163,15 +188,16 @@ export const Home = () => {
 							</Flex>
 						</VStack>
 						<Swiper {...params}>
-							{getRandomRecipesData.map((recipe) => (
+							{getRandomRecipesData.slice(1).map((recipe) => (
 								<SwiperSlide key={recipe.id}>
 									<Link to={`/recipe/${recipe.id}`}>
 										<Skeleton
-											height='100%'
+											fitContent={true}
 											isLoaded={isLoaded}
 											startColor='#404040'
 											endColor='#505050'
-											fadeDuration={2}>
+											speed={1}
+											fadeDuration={1}>
 											<Box
 												width='100%'
 												height={isLargerThan480 ? "300px" : "180px"}>

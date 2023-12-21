@@ -6,7 +6,7 @@ const mediaquery = {
     768:  const [isLargerThan768] = useMediaQuery('(min-width: 768px)')
     600:  const [isLargerThan600] = useMediaQuery('(min-width: 600px)')
     480:  const [isLargerThan480] = useMediaQuery('(min-width: 480px)')
-     320:  const [isLargerThan320] = useMediaQuery('(min-width: 320px)')
+    320:  const [isLargerThan320] = useMediaQuery('(min-width: 320px)')
     
 }
 
