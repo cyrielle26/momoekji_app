@@ -149,9 +149,9 @@ export const Detail = () => {
 												</Box>
 											</Box>
 										</Wrap>
-										<Wrap>
+										{/* <Wrap>
 											<Box bg='pink' width='100%' height='600px'></Box>
-										</Wrap>
+										</Wrap> */}
 									</VStack>
 								</Wrap>
 							</Center>
