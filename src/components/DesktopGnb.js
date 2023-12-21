@@ -9,9 +9,10 @@ import { useMediaQuery } from "@chakra-ui/react"
 export const DesktopGnb = () => {
 	const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
 	const [isLargerThan480] = useMediaQuery("(min-width: 480px)")
+	const [isLargerThan380] = useMediaQuery("(min-width: 380px)")
 	const [isLargerThan360] = useMediaQuery("(min-width: 360px)")
 	return (
-		<HStack width={"250px"} fontSize={"20px"}>
+		<HStack width={isLargerThan380 ? "250px" : "50px"} fontSize={"20px"}>
 			<Link
 				to={routes.home}
 				style={{ display: isLargerThan768 ? "block" : "none" }}>
@@ -26,7 +27,7 @@ export const DesktopGnb = () => {
 					/>
 					<Text
 						fontSize={isLargerThan480 ? "18px" : "16px"}
-						style={{ display: isLargerThan360 ? "block" : "none" }}>
+						style={{ display: isLargerThan380 ? "block" : "none" }}>
 						Explore
 					</Text>
 				</HStack>

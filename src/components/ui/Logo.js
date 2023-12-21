@@ -14,7 +14,13 @@ export const Logo = () => {
 			<Center>
 				<Link to={routes.home}>
 					<CookieBiteSolid
-						boxSize={isLargerThan480 ? "50px" : "35px"}
+						boxSize={
+							isLargerThan480
+								? "50px"
+								: "35px" && isLargerThan360
+								? "35px"
+								: "25px"
+						}
 						color='#DD9F64'
 					/>
 					<Text as='b' fontSize={isLargerThan480 ? "18px" : "14px"}>
